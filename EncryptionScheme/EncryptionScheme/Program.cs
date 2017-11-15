@@ -6,7 +6,14 @@ namespace EncryptionScheme
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            TunderHenk();
+        }
+
+        public static void TunderHenk()
+        {
+            Console.WriteLine("Ballenzooi");
+            Console.ReadLine();
+            
         }
 
 
