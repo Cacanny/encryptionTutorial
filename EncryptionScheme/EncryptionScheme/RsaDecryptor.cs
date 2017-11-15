@@ -5,10 +5,10 @@ using System.Text;
 
 namespace EncryptionScheme
 {
-    public class RsaDecryptor
+    public class RSADecryptor
     {
 
-        public RsaDecryptor(int N, int e, int c)
+        public RSADecryptor(int N, int e, int c)
         {
             this.N = N;
             this.c = c;
