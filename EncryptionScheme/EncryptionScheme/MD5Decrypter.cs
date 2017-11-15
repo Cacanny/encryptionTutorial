@@ -11,11 +11,9 @@ namespace EncryptionScheme
         public MD5Decrypter()
         {
             FillArray();
-
-            Console.Read();
         }
 
-        public void FillArray()
+        private void FillArray()
         {
             charArray = new char[36];
             int index = 0;
@@ -29,16 +27,41 @@ namespace EncryptionScheme
             {
                 charArray[index++] = c;
             }
-
-            foreach (char c in charArray)
-            {
-                Console.Write(c);
-            }
         }
 
-        public void BruteForce()
+        public void Initialize()
         {
+            StartPerm(charArray);
+        }
 
+        private void Swap(ref char a, ref char b)
+        {
+            if (a == b) return;
+
+            a ^= b;
+            b ^= a;
+            a ^= b;
+        }
+    
+        private void StartPerm(char[] list)
+        {
+            int x = list.Length - 1;
+            GetPer(list, 0, x);
+        }
+
+        private void GetPer(char[] list, int k, int m)
+        {
+            if (k == m)
+            {
+                Console.WriteLine(list);
+            }
+            else
+                for (int i = k; i <= m; i++)
+                {
+                    Swap(ref list[k], ref list[i]);
+                    GetPer(list, k + 1, m);
+                    Swap(ref list[k], ref list[i]);
+                }
         }
     }
 }
