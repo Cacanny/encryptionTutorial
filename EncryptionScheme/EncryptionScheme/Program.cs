@@ -24,7 +24,7 @@ namespace EncryptionScheme
             int c = 158; // The encrypted message
 
             // Make a new instance of the RsaEncryptor with the above variables
-            RsaDecryptor rsaDecryptor = new RsaDecryptor(N, e, c);
+            RSADecryptor rsaDecryptor = new RSADecryptor(N, e, c);
 
             // Initialize a decryption of the message 
             rsaDecryptor.Initialize();
@@ -41,8 +41,10 @@ namespace EncryptionScheme
             // Limit the characterCount so bruteforce don't take all day.
             int characterCount = result.Length;
 
+            // Make a new instance of the MD5Encryptor
             MD5Decrypter mD5Decrypter = new MD5Decrypter(hash, characterCount);
 
+            // Initialize of the MD5 decryption.
             mD5Decrypter.Initialize();
 
         }
