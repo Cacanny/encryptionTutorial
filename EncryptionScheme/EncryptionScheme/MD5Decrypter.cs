@@ -34,38 +34,80 @@ namespace EncryptionScheme
 
         public void Initialize()
         {
-            StartPerm(charArray);
+            Console.WriteLine("First Test");
+            int k = this.HashLength;
+            printAllKLength(charArray, k);
+            Console.Read();
         }
 
-        private void Swap(ref char a, ref char b)
+        private void printAllKLength(char[] set, int k)
         {
-            if (a == b) return;
-
-            a ^= b;
-            b ^= a;
-            a ^= b;
-        }
-    
-        private void StartPerm(char[] list)
-        {
-            int x = list.Length - 1;
-            GetPer(list, 0, x);
+            int n = set.Length;
+            printAllKLengthRec(set, "", n, k);
         }
 
-        private void GetPer(char[] list, int k, int m)
+        private void printAllKLengthRec(char[] set, String prefix, int n, int k)
         {
-            if (k == m)
+            // Base case: k is 0, print prefix
+            if (k == 0)
             {
-                Console.WriteLine(list);
+                Console.WriteLine(prefix);
+                string md5Hash = CreateMD5(prefix);
+                Console.WriteLine(md5Hash);
+                //Console.Read();
+
+                if (CompareHash(md5Hash))
+                {
+                    Console.ReadLine();
+                    return;
+                }
+                return;
+            }
+
+            // One by one add all characters from set and recursively 
+            // call for k equals to k-1
+            for (int i = 0; i < n; ++i)
+            {
+
+                // Next character of input added
+                string newPrefix = prefix + set[i];
+
+                // k is decreased, because we have added a new character
+                printAllKLengthRec(set, newPrefix, n, k - 1);
+            }
+        }
+
+        private string CreateMD5(string input)
+        {
+            // Use input string to calculate MD5 hash
+            using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
+            {
+                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+                // Convert the byte array to hexadecimal string
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("X2"));
+                }
+                return sb.ToString().ToLower();
+            }
+        }
+
+        private bool CompareHash(string hash)
+        {
+            if(hash == this.Hash)
+            {
+                return true;
             }
             else
-                for (int i = k; i <= m; i++)
-                {
-                    Swap(ref list[k], ref list[i]);
-                    GetPer(list, k + 1, m);
-                    Swap(ref list[k], ref list[i]);
-                }
+            {
+                return false;
+            }
         }
+
+        
 
         public string Hash { get; set; }
         public int HashLength { get; set; }

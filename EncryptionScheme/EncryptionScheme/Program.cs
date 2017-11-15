@@ -10,10 +10,11 @@ namespace EncryptionScheme
         {
 
             // Static void function to start a RSA decryption;
-            StartRSADecryption();
+            //StartRSADecryption();
 
             // Static void function to start a decryption of a MD5 hash.
             StartMD5Decryption();
+            Console.Read();
         }
 
         public static void StartRSADecryption()
@@ -28,15 +29,17 @@ namespace EncryptionScheme
 
             // Initialize a decryption of the message 
             rsaDecryptor.Initialize();
+
+
         }
 
         public static void StartMD5Decryption()
         {
             // Change hash to the hash you wanted decrypted 
-            string hash = "a34feb63bb51d48ce8992cf0361f8121";
-
+            //string hash = "a34feb63bb51d48ce8992cf0361f8121";
+            string hash = "685faee72afd337551c7a312511fd059";
             // Preconfigured Hash above has to have the following result in order to succeed.
-            string result = "windesheim";
+            string result = "windeshe1m";
 
             // Limit the characterCount so bruteforce don't take all day.
             int characterCount = result.Length;
