@@ -6,16 +6,17 @@ namespace EncryptionScheme
     {
         static void Main(string[] args)
         {
-            TunderHenk();
+            RsaEncryption();
         }
 
-        public static void TunderHenk()
+
+        public static void RsaEncryption()
         {
-            Console.WriteLine("Ballenzooi");
-            Console.ReadLine();
-            
+            Console.WriteLine("################################################################");
+            Console.WriteLine(" Waiting ...");
+            Console.WriteLine("################################################################");
+            Console.Read();
         }
-
 
     }
 }
