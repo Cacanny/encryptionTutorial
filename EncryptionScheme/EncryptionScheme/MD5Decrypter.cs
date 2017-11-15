@@ -8,8 +8,11 @@ namespace EncryptionScheme
     {
         public char[] charArray { get; set; }
 
-        public MD5Decrypter()
+        public MD5Decrypter(string hash, int hashLength)
         {
+
+            this.Hash = hash;
+            this.HashLength = hashLength;
             FillArray();
 
             Console.Read();
@@ -40,5 +43,8 @@ namespace EncryptionScheme
         {
 
         }
+
+        public string Hash { get; set; }
+        public int HashLength { get; set; }
     }
 }

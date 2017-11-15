@@ -15,7 +15,7 @@ namespace EncryptionScheme
             this.e = e;
         }
 
-        public void RsaDecryption()
+        public void Initialize()
         {
             Console.WriteLine("### Starting RsaEncryption operation ### ");
             Console.WriteLine($"### Given variables are N = {N}, c = {c} and e = {e} ");
