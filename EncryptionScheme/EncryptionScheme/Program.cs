@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 
 namespace EncryptionScheme
 {
@@ -14,8 +15,9 @@ namespace EncryptionScheme
 
         static void Main(string[] args)
         {
-            
-            RsaEncryption();
+
+            MD5Decrypter md5 = new MD5Decrypter();
+            //RsaEncryption();
         }
 
 
@@ -23,7 +25,12 @@ namespace EncryptionScheme
         {
             Primes(N);
             CalculateD(e);
-            double message = Decrypt();
+            //double message = Decrypt();
+            BigInteger message = BigInteger.Pow(c, d);
+            Console.WriteLine(message);
+            BigInteger result = message % N;
+            Console.WriteLine(result);
+
             //Console.WriteLine(message.ToString());
             Console.Read();
         }
@@ -60,17 +67,17 @@ namespace EncryptionScheme
             }
         }
 
-        public static double Decrypt()
-        {
-            Console.WriteLine("Decrypt");
-            double message = Math.Pow(c, d);
-            Console.WriteLine(message);
+    //    public static double Decrypt()
+    //    {
+    //        Console.WriteLine("Decrypt");
+    //        BigInteger message = (BigInteger)Math.Pow(c, d);
+    //        Console.WriteLine(message);
         
-            double result = message % N;
-            Console.WriteLine(result);
-            return message;
+    //        double result = message % N;
+    //        //Console.WriteLine(result);
+    //        //return message;
 
             
-        }
+    //    }
     }
 }
