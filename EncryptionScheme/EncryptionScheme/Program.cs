@@ -8,12 +8,14 @@ namespace EncryptionScheme
 
         static void Main(string[] args)
         {
+            // Uncomment or comment the below functions to
+            // start the function you want to start
 
             // Static void function to start a RSA decryption;
             //StartRSADecryption();
 
-            // Static void function to start a decryption of a MD5 hash.
-            StartMD5Decryption();
+            // Static void function to start a bruteforce of a MD5 hash.
+            StartMD5BruteForce();
             Console.Read();
         }
 
@@ -33,7 +35,7 @@ namespace EncryptionScheme
 
         }
 
-        public static void StartMD5Decryption()
+        public static void StartMD5BruteForce()
         {
             // Change hash to the hash you wanted decrypted 
             //string hash = "a34feb63bb51d48ce8992cf0361f8121";
@@ -45,10 +47,10 @@ namespace EncryptionScheme
             int characterCount = result.Length;
 
             // Make a new instance of the MD5Encryptor
-            MD5Decrypter mD5Decrypter = new MD5Decrypter(hash, characterCount);
+            MD5BruteForce md5BruteForce = new MD5BruteForce(hash, characterCount);
 
             // Initialize of the MD5 decryption.
-            mD5Decrypter.Initialize();
+            md5BruteForce.Initialize();
 
         }
     }

@@ -4,11 +4,11 @@ using System.Text;
 
 namespace EncryptionScheme
 {
-    public class MD5Decrypter
+    public class MD5BruteForce
     {
         public char[] charArray { get; set; }
 
-        public MD5Decrypter(string hash, int characterCount)
+        public MD5BruteForce(string hash, int characterCount)
         {
 
             this.Hash = hash;
@@ -35,7 +35,7 @@ namespace EncryptionScheme
         public void Initialize()
         {
             Console.WriteLine("First Test");
-            int k = this.HashLength;
+            int k = this.CharacterCount;
             printAllKLength(charArray, k);
             Console.Read();
         }
@@ -54,10 +54,10 @@ namespace EncryptionScheme
                 Console.WriteLine(prefix);
                 string md5Hash = CreateMD5(prefix);
                 Console.WriteLine(md5Hash);
-                //Console.Read();
 
                 if (CompareHash(md5Hash))
                 {
+                    Console.WriteLine($"Your password has been found: {prefix}");
                     Console.ReadLine();
                     return;
                 }
